@@ -9,6 +9,9 @@ param environmentName string
 @description('Primary location for all resources')
 param location string
 
+@description('Current IP')
+param IP string
+
 // Tags that should be applied to all resources.
 // 
 // Note that 'azd-service-name' tags should be applied separately to service host resources.
@@ -28,18 +31,17 @@ resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 }
 
 //invoke the resources.bicep file
-module fdcdn './fdcdn.bicep' = {
+module pg 'pg.bicep' = {
   scope: rg
   name: 'resourcesDeployment'
   params: {
     location: location
-    tags: tags
     environmentName: environmentName
     principalId: principalId
+    IP: IP
 
   }
 }
 
-output WEBAPP_SERVICE_NAME string = fdcdn.outputs.AppServiceName
-output BLOB_BASE_IMAGE_URL string = fdcdn.outputs.BlobImageBaseUrl
-output CDN_BASE_IMAGE_URL string = fdcdn.outputs.CDNImageBaseUrl
+output PGADMINPWD string = pg.outputs.PWD
+output KEYVAULT_ID string = pg.outputs.KEYVAULT_ID

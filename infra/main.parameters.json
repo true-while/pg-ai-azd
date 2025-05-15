@@ -8,9 +8,15 @@
       "location": {
         "value": "${AZURE_LOCATION}"
       },
-      "copyImages": {
-        "value": "true"
-      },
+      "IP": {
+        "value": "${IP}"
+      },    
+      "PGADMINPWD": {
+        "value": "${PGADMINPWD}"
+      },    
+      "KEYVAULT_ID": {
+        "value": "${KEYVAULT_ID}"
+      }, 
       "principalId": {
         "value": "${AZURE_PRINCIPAL_ID}"
     }

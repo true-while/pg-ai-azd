@@ -5,9 +5,20 @@ metadata:
     template: tdd-azd-fdcdn@1.11.0
 infra:
    provider: "bicep"
+hooks:
+  preup: 
+    shell: pwsh
+    interactive: true
+    run: |      
+      $ip = (Invoke-WebRequest -Uri "http://ifconfig.me/ip").Content.Trim()
+      $ipm = ([IPAddress] (([IPAddress] $ip).Address -band ([IPAddress] "255.255.255.0").Address)).IPAddressToString + '/24'
+      azd env set IP $ipm
+      
+  postdeploy:
+      shell: pwsh
+      interactive: true
+      run: |
+        Write-Output "Step 1: Create KeyVault RBAC assignment"
+        az role assignment create --assignee $env:USER --role "Key Vault Crypto Officer" --scope $env:KEYVAULT_ID --output none
 
-services:
-  webapp:
-    project: ./WebSite
-    host: appservice
-    language: dotnet
+        Write-Output "PgAdmin pwd for your reference: $env:PGADMINPWD"
