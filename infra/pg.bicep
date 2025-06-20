@@ -244,3 +244,4 @@ resource AlloMyIPr 'Microsoft.DBforPostgreSQL/flexibleServers/firewallRules@2024
 
 output PWD string = pgAdminPass
 output KEYVAULT_ID string = keyvault.id
+output PGHOST string = '${mainserver_resource.name}.postgres.database.azure.com'

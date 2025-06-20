@@ -2,4 +2,5 @@
 [comment]: <> (typical use case could be a specific Dev Language SDK like .NET 6)
 [comment]: <> (don't add any other information, as this is rendered as part of a prereqs element on the webpage)
 
-- [.NET 9 Framework](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+
+- [psql (PostgreSQL Command Line Tool)](https://www.postgresql.org/download/) – Install the PostgreSQL client tools to use the psql command line utility for connecting and managing PostgreSQL databases.

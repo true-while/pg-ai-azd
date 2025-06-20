@@ -43,6 +43,7 @@ module pg 'pg.bicep' = {
   }
 }
 
-output PGADMINPWD string = pg.outputs.PWD
+output PGPASSWORD string = pg.outputs.PWD
 output KEYVAULT_ID string = pg.outputs.KEYVAULT_ID
 output USER string = principalId
+output PGHOST string = pg.outputs.PGHOST

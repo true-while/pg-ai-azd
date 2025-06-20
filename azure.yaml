@@ -19,4 +19,9 @@ hooks:
       interactive: true
       run: |
         az role assignment create --assignee $env:USER --role "Key Vault Crypto Officer" --scope $env:KEYVAULT_ID  --subscription $env:AZURE_SUBSCRIPTION_ID --output none 
-        Write-Output "PgAdmin pwd for your reference: $env:PGADMINPWD"
+        Write-Output "PgAdmin pwd for your reference: $env:PGPASSWORD"
+        Write-Output "PgAdmin URL: $env:PGHOST"
+        psql -h $env:PGHOST -U pgAdmin -d postgres -p 5432 -c 'DROP DATABASE IF EXISTS zoodb; CREATE DATABASE zoodb;'
+        psql -h $env:PGHOST -U pgAdmin -d zoodb -p 5432 -f './infra/zoodb.sql' --set ON_ERROR_STOP=1
+        psql -h $env:PGHOST -U pgAdmin -d zoodb -p 5432 -f './infra/refreshzoodb.sql' --set ON_ERROR_STOP=1
+        Write-Output "Zoodb has been created and populated with data"

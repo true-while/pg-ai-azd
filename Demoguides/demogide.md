@@ -29,52 +29,95 @@
             margin: 5px;">
 
 **Tip:** This template will build enviroment and load up it with data. Meanwhile to set up demos you might need to configure additional settings  mention in preparation steps: 
+
+To connect and manage your PostgreSQL databases, you can use the following tools:
+
+- [Azure Data Studio](https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio) – A cross-platform database tool for data professionals.
+- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql) – Enables PostgreSQL management and query capabilities directly in VS Code.
+- 
 </div>
 
 ***
 ### 1. What Resources are getting deployed
-This scenario deploys **a basic website index.html file**, displaying Seattle scenery images, coming from 3 different backend services. One is the web app /images folder location, the 2nd one is from within an /images blob container, and the 3rd one is using a Frontdoor with CDN caching towards the web application.  
+This scenario deploys a PostgreSQL environment to showcase key database features and functionality, along with its integration with Azure services such as Key Vault and OpenAI. 
 
-* MTTDemoDeployRGc%youralias%FDCDN - Azure Resource Group.
-* %youralias%fdcdnprofile - Azure FrontDoor with CDN Cache configuration
-* %youralias%fdcdnsite - Simple index.html page in Azure App Service
-* %youralias%fdserverfarm - Azure App Service Plan
-* %youralias%fdstorageaccount - Azure Storage Account, used by Azure Front Door CDN
+Deployment includes:
 
-<img src="https://raw.githubusercontent.com/petender/azd-fdcdn/main/Demoguides/FDCDN/FDCDN_ResourceGroup_Overview.png" alt="FDCDN Resource Group" style="width:70%;">
-<br></br>
+* Azure Resource Group.
+* Azure Keyvault
+* Language cognitive service
+* Azure Database for PostgreSQL flexible server in two instance
+* Azure OpenAI service
+
+![RG content](rg.png)
+
+<!-- <img src="https://raw.githubusercontent.com/petender/azd-fdcdn/main/Demoguides/FDCDN/FDCDN_ResourceGroup_Overview.png" alt="FDCDN Resource Group" style="width:70%;">
+<br></br> -->
 
 ### What can I demo from this scenario after deployment
 
+This demo environment has been created to support the delivery of courses DP-3021 and AI-3019. It focuses on the deployment and configuration of PostgreSQL, as well as its integration with Azure AI services. The demos are organized to follow the sequence of modules in the corresponding classes.
 
-### 1. DP-3021. Provision and configure PostgreSQL 
+## DP-3021. Configure and migrate to Azure Database for PostgreSQL 
 
-Following demo will intorduces the provisioned services and demonstart how to configure PostgreSQL parameters. 
+### Demo #1 Provision PostgreSQL and Configure Server parameters
 
-The following set of paramters could be configured from the page:
+This demo introduces the provisioned services and demonstrates how to configure key PostgreSQL parameters.
 
-**work_mem**: For sorting and hash tables.
-maintenance_work_mem: For vacuuming and reindexing.
-autovacuum_work_mem: Used by autovacuum processes.
-temp_buffers: Stores temporary tables.
-effective_cache_size: For OS and DB disk caching.
+The following parameters can be configured from the `Server parameters` blade in Azure PostgreSQL server:
+
+* **work_mem**: Controls memory used for internal sort operations and hash tables before writing to temporary disk files.
+* **maintenance_work_mem**: Allocated for maintenance operations such as VACUUM, CREATE INDEX, and ALTER TABLE.
+* **autovacuum_work_mem**: Memory used by autovacuum processes to manage background cleanup tasks.
+* **temp_buffers:** Defines the amount of memory used for temporary tables within each session.
+* **effective_cache_size**: Provides a rough estimate of how much memory is available for disk caching by the operating system and PostgreSQL.
+
+![Server parameters](params.png)
+
+<!-- <img src="https://raw.githubusercontent.com/petender/azd-fdcdn/main/Demoguides/FDCDN/FDCDN_webappimages.png" alt="FDCDN Web App Images" style="width:70%;">
+<br></br> -->
+
+### Demo #2 Connectivity Tools
+
+These tools provide a user-friendly interface for connecting, querying, and managing your PostgreSQL databases on Azure.
+
+- [Azure Data Studio](https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio) 
+- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql) 
+
+When you run the **Azure Data Studio** you need create a connection to your server. Server name can be picked from the `Overview` page from the Azure Portal and user name is pgAdmin and password located in the Keyvault secret `pgAdmin`.
+
+![Azure Data Studio](connect.png)
+
+After connection to the server you should see the list of the databases and will be able to run the SQL query. 
+
+![query](query.png)
 
 
 
-1. In this scenario, you are streaming images on a webpage, loaded from 3 different storage back-ends. The first scenario involves pulling them in from the App Service local storage folder. 
-1. Navigate to the **App Service**, and open the **web app URL** in the browser.
-1. Click the **Download from App Service** button.  
-1. This shows 6 images, and the load time in millisecs.
+## Demo 3: Explain statement
 
-<img src="https://raw.githubusercontent.com/petender/azd-fdcdn/main/Demoguides/FDCDN/FDCDN_webappimages.png" alt="FDCDN Web App Images" style="width:70%;">
-<br></br>
+The `EXPLAIN` statement displays the execution plan for a query, helping you understand how PostgreSQL will execute it. This includes whether indexes are used, how tables are joined, and the estimated cost of the query.
+
+**Common EXPLAIN options:**
+- `ANALYZE`: Executes the query and provides actual run-time statistics in addition to the plan.
+- `VERBOSE`: Shows additional information about the plan nodes.
+- `COSTS`: Includes estimated startup and total costs for each plan node (enabled by default).
+- `BUFFERS`: Reports buffer usage statistics (requires ANALYZE).
+- `FORMAT`: Sets the output format (e.g., TEXT, XML, JSON, YAML).
+
+Example usage:
+```sql
+EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT * FROM mytable WHERE id = 1;
+```
+
+
 
 1. The 2nd scenario streams images from Azure Storage Account. Open the **%youralias%fdstorageaccount** Azure Storage Account.
-1. Navigate to Storage Browser / Blob Containers / **Images** Container and show the 6 image files present.
-1. Return to the web page itself, refresh the page in the browser, and click the 2nd button **Download from Azure Blob Storage**
-1. Wait for the images to load, and note the loading time. This should be **faster** than the previous scenario.
-1. Navigate back to the Azure Portal, and open the **FrontDoor Resource** blade.
-1. From the **Overview** blade, explain the **Properties** such as Endpoint hostname, reflecting the name of the FrontDoor Service, the Origin Groups, pointing at the actual service(s) getting published through FrontDoor, and Routes, pointing at how FrontDoor is handling routing traffic.
+2. Navigate to Storage Browser / Blob Containers / **Images** Container and show the 6 image files present.
+3. Return to the web page itself, refresh the page in the browser, and click the 2nd button **Download from Azure Blob Storage**
+4. Wait for the images to load, and note the loading time. This should be **faster** than the previous scenario.
+5. Navigate back to the Azure Portal, and open the **FrontDoor Resource** blade.
+6. From the **Overview** blade, explain the **Properties** such as Endpoint hostname, reflecting the name of the FrontDoor Service, the Origin Groups, pointing at the actual service(s) getting published through FrontDoor, and Routes, pointing at how FrontDoor is handling routing traffic.
 
 <img src="https://raw.githubusercontent.com/petender/azd-fdcdn/main/Demoguides/FDCDN/FDCDN_frontdoor.png" alt="FDCDN Frontdoor" style="width:70%;">
 <br></br>

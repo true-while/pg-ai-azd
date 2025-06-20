@@ -11,9 +11,12 @@
       "IP": {
         "value": "${IP}"
       },    
-      "PGADMINPWD": {
-        "value": "${PGADMINPWD}"
-      },    
+      "PGHOST": {
+        "value": "${PGHOST}"
+      },  
+      "IP": {
+        "value": "${IP}"
+      },  
       "KEYVAULT_ID": {
         "value": "${KEYVAULT_ID}"
       }, 
