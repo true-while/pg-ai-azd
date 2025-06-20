@@ -11,14 +11,12 @@ hooks:
     interactive: true
     run: |      
       $ip = (Invoke-WebRequest -Uri "http://ifconfig.me/ip").Content.Trim()
-      $ipm = ([IPAddress] (([IPAddress] $ip).Address -band ([IPAddress] "255.255.255.0").Address)).IPAddressToString + '/24'
-      azd env set IP $ipm
-      
+      Write-Output "your IP $ip will be used to set up the firewall rules for the database"
+      azd env set IP $ip
+
   postdeploy:
       shell: pwsh
       interactive: true
       run: |
-        Write-Output "Step 1: Create KeyVault RBAC assignment"
-        az role assignment create --assignee $env:USER --role "Key Vault Crypto Officer" --scope $env:KEYVAULT_ID --output none
-
+        az role assignment create --assignee $env:USER --role "Key Vault Crypto Officer" --scope $env:KEYVAULT_ID  --subscription $env:AZURE_SUBSCRIPTION_ID --output none 
         Write-Output "PgAdmin pwd for your reference: $env:PGADMINPWD"

@@ -7,7 +7,7 @@
 
 [comment]: <> (this is the section for the Note: item; please do not make any changes here)
 ***
-### Azure FrontDoor with CDN and WebApp - demo scenario
+### Azure PostgreSQL
 
 <div style="background: lightgreen; 
             font-size: 14px; 
@@ -28,7 +28,7 @@
             border: 1px solid lightgray; 
             margin: 5px;">
 
-**Tip:** There is **purposely** some minimal manual editing needed to get the web app working. Feel free to do this right after deployment, or together with the learners, explaining the different data streaming scenarios used in the webapp.
+**Tip:** This template will build enviroment and load up it with data. Meanwhile to set up demos you might need to configure additional settings  mention in preparation steps: 
 </div>
 
 ***
@@ -44,7 +44,22 @@ This scenario deploys **a basic website index.html file**, displaying Seattle sc
 <img src="https://raw.githubusercontent.com/petender/azd-fdcdn/main/Demoguides/FDCDN/FDCDN_ResourceGroup_Overview.png" alt="FDCDN Resource Group" style="width:70%;">
 <br></br>
 
-### 2. What can I demo from this scenario after deployment
+### What can I demo from this scenario after deployment
+
+
+### 1. DP-3021. Provision and configure PostgreSQL 
+
+Following demo will intorduces the provisioned services and demonstart how to configure PostgreSQL parameters. 
+
+The following set of paramters could be configured from the page:
+
+**work_mem**: For sorting and hash tables.
+maintenance_work_mem: For vacuuming and reindexing.
+autovacuum_work_mem: Used by autovacuum processes.
+temp_buffers: Stores temporary tables.
+effective_cache_size: For OS and DB disk caching.
+
+
 
 1. In this scenario, you are streaming images on a webpage, loaded from 3 different storage back-ends. The first scenario involves pulling them in from the App Service local storage folder. 
 1. Navigate to the **App Service**, and open the **web app URL** in the browser.

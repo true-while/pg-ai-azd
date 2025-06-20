@@ -45,3 +45,4 @@ module pg 'pg.bicep' = {
 
 output PGADMINPWD string = pg.outputs.PWD
 output KEYVAULT_ID string = pg.outputs.KEYVAULT_ID
+output USER string = principalId
