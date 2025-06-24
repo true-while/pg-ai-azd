@@ -105,10 +105,93 @@ The `EXPLAIN` statement displays the execution plan for a query, helping you und
 - `BUFFERS`: Reports buffer usage statistics (requires ANALYZE).
 - `FORMAT`: Sets the output format (e.g., TEXT, XML, JSON, YAML).
 
-Example usage:
-```sql
-EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT * FROM mytable WHERE id = 1;
-```
+You can demonstrate queries and result of from `Notebooks/explain.ipynb`.
+
+![Explain Function](explain.png)
+
+## Demo 4: Explain DB Roles in PostgreSQL
+
+These roles help ensure secure and controlled access to your PostgreSQL server in Azure. The server already contains set of predefined roles like `pgAdmin` and `pg_database_owner`
+
+Azure Database for PostgreSQL includes several built-in roles to help manage and secure your database:
+
+- **azure_pg_admin**: This role is automatically granted to the server admin user. It provides elevated privileges for managing databases, roles, and most server-level operations, but does not have superuser rights for security reasons.
+- **azuresu**: This is a special internal role used by the Azure platform for maintenance and management tasks. It is not assignable to users and is reserved for system operations.
+
+You can demonstrate assigning and building custom roles from `Notebooks/roles.ipynb`.
+
+![alt text](roles.png)
+
+
+## Demo 5: Explain Stored Procedure and Functions
+
+Azure Database for PostgreSQL supports both user-defined functions and stored procedures to help you encapsulate logic and reuse code in your database.
+
+- **Create and use a function:**
+  Functions in PostgreSQL allow you to encapsulate SQL logic that returns a value or a result set. You can create functions using PL/pgSQL or other supported languages. Functions are commonly used for calculations, data transformations, or reusable queries. 
+
+- **Create a stored procedure:**
+  Stored procedures are similar to functions but are designed for performing actions such as data modifications, transaction control, or complex business logic. Procedures can be called with the CALL statement and do not have to return a value.
+
+You can find practical examples in `Notebooks/proc-func.ipynb`.
+
+![Stored Procedures and Functions](proc-func.png)
+
+
+## Demo 6: Explain replication 
+
+For this demo you need to get connected for second DB provisioned above.
+
+1. You have two servers provisioned. Publisher - your database server started with `main`. Subscriber is another instance started with `replica`. Update both servers with following Server parameters. 
+
+  * `wal_level`= LOGICAL
+  * `max_worker_processes` = 24
+
+2. Save and Restart server.
+
+3. Check the firewall settings. It should be opened to let the second server connects:
+
+![firewall exception](networking.png)
+
+4. Then you need to run queries from `Notebooks/pub-sub.sql` for appropriate databases.  Make sure you updated connection string in 
+`CREATE SUBSCRIPTION sub CONNECTION ...`
+
+5. When you create subscription you should see records inserted in the replica server equal to main server.
+
+![Replica Table updated](replica.png)
+
+
+
+## Demo 7: Explore metadata and VACUUM command
+
+This demo explores PostgreSQL system catalogs and maintenance commands:
+
+- **pg_catalog.pg_index**: View metadata about indexes defined on tables, including which columns are indexed and index properties.
+- **pg_catalog.pg_stat_user_tables**: Monitor statistics for user tables, such as number of sequential and index scans, tuples inserted/updated/deleted, and autovacuum activity.
+- **VACUUM**: Manually reclaims storage and optimizes tables by cleaning up dead tuples.
+- **autovacuum**: An automatic background process that periodically runs VACUUM to maintain database health and performance.
+
+You can find example queries and demonstrations in `Notebooks/metadata.ipynb` and related notebooks.
+
+![vacuum](vacuum.png)
+
+
+## Demo 8: Explore Query Store
+
+This demo introduces the Query Store feature in Azure Database for PostgreSQL, which helps you monitor and analyze query performance over time. Query Store automatically captures query history, execution statistics, and wait events, making it easier to troubleshoot and optimize workloads.
+
+Key views to explore:
+- **query_store.query_texts_view**: Displays the text of queries captured by Query Store.
+- **query_store.qs_view**: Shows aggregated statistics for queries, such as execution count, duration, and resource usage.
+- **query_store.runtime_stats_view**: Provides runtime statistics for query executions.
+- **query_store.pgms_wait_sampling_view**: Contains information about wait events sampled during query execution.
+
+You can find example queries and practical usage in `Notebooks/QueryStore.ipynb`.
+
+![Query Store](querystore.png)
+
+
+
 
 
 
