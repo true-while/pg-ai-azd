@@ -241,6 +241,14 @@ resource AlloMyIPr 'Microsoft.DBforPostgreSQL/flexibleServers/firewallRules@2024
     endIpAddress: IP  }
 }
 
+resource allowlistExtensions 'Microsoft.DBforPostgreSQL/flexibleServers/configurations@2023-03-01-preview' = {
+  name: 'azure.extensions'
+  parent: mainserver_resource
+  properties: {
+    source: 'user-override'
+    value: 'azure_ai,vector'
+  }
+}
 
 output PWD string = pgAdminPass
 output KEYVAULT_ID string = keyvault.id

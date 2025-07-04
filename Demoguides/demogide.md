@@ -191,6 +191,87 @@ You can find example queries and practical usage in `Notebooks/QueryStore.ipynb`
 ![Query Store](querystore.png)
 
 
+## AI-3019. Build AI Apps with Azure Database for PostgreSQL
+
+before run demo configure extensions with key and endpoint and location from your AI Language service 
+
+
+```SQL
+SELECT azure_ai.set_setting('azure_cognitive.endpoint','https://<YOUR_ENDPOINT>.cognitiveservices.azure.com/');
+SELECT azure_ai.set_setting('azure_cognitive.subscription_key', '<YOUR_KEY>');
+SELECT azure_ai.set_setting('azure_cognitive.region', '<YOUR_REGION>');
+```
+
+Another configuration should be added fro OPen AI model:
+
+```SQL
+SELECT azure_ai.set_setting('azure_openai.endpoint', '{endpoint}');
+SELECT azure_ai.set_setting('azure_openai.subscription_key', '{api-key}');
+```
+
+
+### Demo 1: Explore the Azure AI Extension
+
+This demo shows how to enable and configure the Azure AI and vector extensions in PostgreSQL using `psql` tool. You will connect to the database, install the required extensions, and set up API keys for Azure OpenAI and Language AI services. The demo also demonstrates creating vector embeddings and running sentiment analysis queries directly from PostgreSQL.
+
+```SQL
+SELECT
+    id,
+    comments,
+    azure_cognitive.analyze_sentiment(comments, 'en') AS sentiment
+FROM reviews
+WHERE id IN (1, 3);
+```
+
+![sentiment](sentiment.png)
+
+
+### Demo 2: Explore vector search.
+
+This demo shows how to enhance a listings database with semantic search using Azure OpenAI embeddings. First, a new column is added to store 1,536-dimensional vectors generated from listing descriptions. These embeddings are created using the text-embedding-ada-002 model and stored in the database. A user can then input a natural language query, which is also converted into an embedding. Finally, a cosine similarity search retrieves listings with descriptions most semantically similar to the query, even if the exact words don’t match.
+
+You can find practical examples in `Notebooks/vector-search.ipynb`.
+
+![alt text](vectorsearch.png)
+
+You also can create recommendation function to pull several listings based on a provided preferences.
+
+You can find practical examples in `Notebooks/vector-store.ipynb`.
+
+![alt text](vectorstore.png)
+
+### Demo 3: Explore data summarization  
+
+This task demonstrates how to generate two-sentence summaries of property descriptions using both extractive and abstractive summarization techniques. Additionally, the same summarization technique is applied to reviews, allowing users to quickly understand the overall sentiment and highlights of guest feedback.
+
+You can find practical examples in `Notebooks/summarization.ipynb`.
+
+![summarization](summarization.png)
+
+
+### Demo 4: Explore sentiment analysis   
+
+Following demonstrates how to analyze the sentiment of property reviews using Azure's analyze_sentiment() function. The sentiment result includes an overall label (e.g., positive, mixed, negative) and confidence scores for positive, neutral, and negative tones. For deeper insight, sentence-level sentiment analysis can be performed by splitting reviews into individual sentences. To optimize performance and reduce API costs, sentiment analysis is executed in batches and the results are stored in new columns in the reviews table. This allows the application to quickly access sentiment data without reprocessing, and enables queries such as identifying the most negative reviews for further analysis or moderation.
+
+You can find practical examples in `Notebooks/sentiments.ipynb`.
+
+![Sentiments](sentiments.png)
+
+
+### Demo 5: Explore text analysis   
+
+The workflow demonstrates how to use Azure Cognitive Services in PostgreSQL to extract key phrases, named entities, and personally identifiable information (PII) from listing descriptions. It involves creating new columns in the listings table to store extracted data, then populating them in batches using SQL UPDATE statements. Key phrases and entities are stored as arrays, while PII results include both redacted text and identified entities. The enriched data enables advanced querying, such as finding listings with specific features or redacting sensitive information.
+
+You can find practical examples in `Notebooks/text.ipynb`.
+
+![text](text.png)
+
+
+### Demo 6: Explore Translate Text  
+
+
+
+
 
 
 
@@ -199,8 +280,8 @@ You can find example queries and practical usage in `Notebooks/QueryStore.ipynb`
 2. Navigate to Storage Browser / Blob Containers / **Images** Container and show the 6 image files present.
 3. Return to the web page itself, refresh the page in the browser, and click the 2nd button **Download from Azure Blob Storage**
 4. Wait for the images to load, and note the loading time. This should be **faster** than the previous scenario.
-5. Navigate back to the Azure Portal, and open the **FrontDoor Resource** blade.
-6. From the **Overview** blade, explain the **Properties** such as Endpoint hostname, reflecting the name of the FrontDoor Service, the Origin Groups, pointing at the actual service(s) getting published through FrontDoor, and Routes, pointing at how FrontDoor is handling routing traffic.
+5.  Navigate back to the Azure Portal, and open the **FrontDoor Resource** blade.
+6.  From the **Overview** blade, explain the **Properties** such as Endpoint hostname, reflecting the name of the FrontDoor Service, the Origin Groups, pointing at the actual service(s) getting published through FrontDoor, and Routes, pointing at how FrontDoor is handling routing traffic.
 
 <img src="https://raw.githubusercontent.com/petender/azd-fdcdn/main/Demoguides/FDCDN/FDCDN_frontdoor.png" alt="FDCDN Frontdoor" style="width:70%;">
 <br></br>
