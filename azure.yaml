@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: tdd-azd-fdcdn
+metadata:
+    template: tdd-azd-fdcdn@1.11.0
+infra:
+   provider: "bicep"
+hooks:
+  preup: 
+    shell: pwsh
+    interactive: true
+    run: |      
+      $ip = (Invoke-WebRequest -Uri "http://ifconfig.me/ip").Content.Trim()
+      Write-Output "your IP $ip will be used to set up the firewall rules for the database"
+      azd env set IP $ip
+
+  postdeploy:
+      shell: pwsh
+      interactive: true
+      run: |
+        az role assignment create --assignee $env:USER --role "Key Vault Crypto Officer" --scope $env:KEYVAULT_ID  --subscription $env:AZURE_SUBSCRIPTION_ID --output none 
+        Write-Output "PgAdmin pwd for your reference: $env:PGPASSWORD"
+        Write-Output "PgAdmin URL: $env:PGHOST"
+        psql -h $env:PGHOST -U pgAdmin -d postgres -p 5432 -c "DROP DATABASE IF EXISTS zoodb;"
+        psql -h $env:PGHOST -U pgAdmin -d postgres -p 5432 -c "CREATE DATABASE zoodb;"
+        psql -h $env:PGHOST -U pgAdmin -d zoodb -p 5432 -f './infra/zoodb.sql' --set ON_ERROR_STOP=1 --quiet > $null
+        psql -h $env:PGHOST -U pgAdmin -d zoodb -p 5432 -f './infra/refreshzoodb.sql' --set ON_ERROR_STOP=1 --quiet > $null
+        Write-Output "Zoodb has been created and populated with data"
+        psql -h $env:PGHOST -U pgAdmin -d postgres -p 5432 -c "DROP DATABASE IF EXISTS rentals;"
+        psql -h $env:PGHOST -U pgAdmin -d postgres -p 5432 -c "CREATE DATABASE rentals;"
+        psql -h $env:PGHOST -U pgAdmin -d rentals -p 5432 -f './infra/rentals.sql' --set ON_ERROR_STOP=1
+        Write-Output "Rentals has been created and populated with data"
