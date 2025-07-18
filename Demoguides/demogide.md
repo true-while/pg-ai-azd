@@ -59,7 +59,7 @@ This demo environment has been created to support the delivery of courses `DP-30
 
 ## DP-3021: Configure and migrate to Azure Database for PostgreSQL 
 
-### Demo #1 Provision PostgreSQL and Configure Server parameters
+### Demo #1 - Provision PostgreSQL and Configure Server parameters
 
 This demo introduces the provisioned services and demonstrates how to configure key PostgreSQL parameters.
 
@@ -75,7 +75,7 @@ The following parameters can be configured from the `Server parameters` blade in
 <br></br>
 
 
-### Demo #2 Connectivity Tools
+### Demo #2 - Connectivity Tools
 
 These tools provide a user-friendly interface for connecting, querying, and managing your PostgreSQL databases on Azure.
 
@@ -92,7 +92,7 @@ After connection to the server you should see the list of the databases and will
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/query.png" alt="Explain example" style="width:70%;">
 <br></br>
 
-### Demo 3: Explain statement
+### Demo #3 - Explain statement
 
 The `EXPLAIN` statement displays the execution plan for a query, helping you understand how PostgreSQL will execute it. This includes whether indexes are used, how tables are joined, and the estimated cost of the query.
 
@@ -110,7 +110,7 @@ You can demonstrate queries and result of from `Notebooks/explain.ipynb`.
 <br></br>
 
 
-### Demo 4: Explain DB Roles in PostgreSQL
+### Demo #4 - Explain DB Roles in PostgreSQL
 
 These roles help ensure secure and controlled access to your PostgreSQL server in Azure. The server already contains set of predefined roles like `pgAdmin` and `pg_database_owner`
 
@@ -124,7 +124,7 @@ You can demonstrate assigning and building custom roles from `Notebooks/roles.ip
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/roles.png" alt="Roles" style="width:100%;">
 <br></br>
 
-### Demo 5: Explain Stored Procedure and Functions
+### Demo #5 - Explain Stored Procedure and Functions
 
 Azure Database for PostgreSQL supports both user-defined functions and stored procedures to help you encapsulate logic and reuse code in your database.
 
@@ -140,7 +140,7 @@ You can find practical examples in `Notebooks/proc-func.ipynb`.
 <br></br>
 
 
-### Demo 6: Explain replication 
+### Demo #6 - Explain replication 
 
 For this demo you need to get connected for second DB provisioned above.
 
@@ -164,7 +164,7 @@ For this demo you need to get connected for second DB provisioned above.
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/replica.png" alt="Replica Table updated" style="width:100%;">
 <br></br>
 
-### Demo 7: Explore metadata and VACUUM command
+### Demo #7 - Explore metadata and VACUUM command
 
 This demo explores PostgreSQL system catalogs and maintenance commands:
 
@@ -178,7 +178,7 @@ You can find example queries and demonstrations in `Notebooks/metadata.ipynb` an
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vacuum.png" alt="vacuum example" style="width:100%;">
 <br></br>
 
-### Demo 8: Explore Query Store
+### Demo #8 - Explore Query Store
 
 This demo introduces the Query Store feature in Azure Database for PostgreSQL, which helps you monitor and analyze query performance over time. Query Store automatically captures query history, execution statistics, and wait events, making it easier to troubleshoot and optimize workloads.
 
@@ -217,7 +217,7 @@ CREATE EXTENSION IF NOT EXISTS azure_ai;
 CREATE EXTENSION IF NOT EXISTS vector;
 ```
 
-### Demo 1: Explore the Azure AI Extension
+### Demo #1 - Explore the Azure AI Extension
 
 This demo shows how to enable and configure the Azure AI and vector extensions in PostgreSQL using `psql` tool. You will connect to the database, install the required extensions, and set up API keys for Azure OpenAI and Language AI services. The demo also demonstrates creating vector embeddings and running sentiment analysis queries directly from PostgreSQL.
 
@@ -233,7 +233,7 @@ WHERE id IN (1, 3);
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/sentiment.png" alt="sentiment analyzing" style="width:100%;">
 <br></br>
 
-### Demo 2: Explore vector search.
+### Demo #2 - Explore vector search.
 
 This demo shows how to enhance a listings database with semantic search using Azure OpenAI embeddings. First, a new column is added to store 1,536-dimensional vectors generated from listing descriptions. These embeddings are created using the text-embedding-ada-002 model and stored in the database. A user can then input a natural language query, which is also converted into an embedding. Finally, a cosine similarity search retrieves listings with descriptions most semantically similar to the query, even if the exact words don’t match.
 
@@ -250,7 +250,7 @@ You can find practical examples in `Notebooks/vector-store.ipynb`.
 <br></br>
 
 
-### Demo 3: Explore data summarization  
+### Demo #3 - Explore data summarization  
 
 This task demonstrates how to generate two-sentence summaries of property descriptions using both extractive and abstractive summarization techniques. Additionally, the same summarization technique is applied to reviews, allowing users to quickly understand the overall sentiment and highlights of guest feedback.
 
@@ -259,7 +259,7 @@ You can find practical examples in `Notebooks/summarization.ipynb`.
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/summarization.png" alt="review summarization" style="width:100%;">
 <br></br>
 
-### Demo 4: Explore sentiment analysis   
+### Demo #4 - Explore sentiment analysis   
 
 Following demonstrates how to analyze the sentiment of property reviews using Azure's analyze_sentiment() function. The sentiment result includes an overall label (e.g., positive, mixed, negative) and confidence scores for positive, neutral, and negative tones. For deeper insight, sentence-level sentiment analysis can be performed by splitting reviews into individual sentences. To optimize performance and reduce API costs, sentiment analysis is executed in batches and the results are stored in new columns in the reviews table. This allows the application to quickly access sentiment data without reprocessing, and enables queries such as identifying the most negative reviews for further analysis or moderation.
 
@@ -268,7 +268,7 @@ You can find practical examples in `Notebooks/sentiments.ipynb`.
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/sentiments.png" alt="analyzed sentiments" style="width:100%;">
 <br></br>
 
-### Demo 5: Explore text analysis   
+### Demo #5 - Explore text analysis   
 
 The workflow demonstrates how to use Azure Cognitive Services in PostgreSQL to extract key phrases, named entities, and personally identifiable information (PII) from listing descriptions. It involves creating new columns in the listings table to store extracted data, then populating them in batches using SQL UPDATE statements. Key phrases and entities are stored as arrays, while PII results include both redacted text and identified entities. The enriched data enables advanced querying, such as finding listings with specific features or redacting sensitive information.
 
@@ -278,7 +278,7 @@ You can find practical examples in `Notebooks/text.ipynb`.
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/text.png" alt="analyzed review" style="width:100%;">
 <br></br>
 
-### Demo 6: Explore Translate Text  
+### Demo #6 - Explore Translate Text  
 
 Before run demo configure extensions with key and endpoint and location from your AI **Translate** service. 
 Previous values for Text Analyzing service will be overwrite by Translator settings. 
