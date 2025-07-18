@@ -153,7 +153,7 @@ For this demo you need to get connected for second DB provisioned above.
 
 3. Check the firewall settings. It should be opened to let the second server connects:
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/networking.png" alt="firewall exception" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/networking.png" alt="firewall exception" style="width:70%;">
 
 
 1. Then you need to run queries from `Notebooks/pub-sub.sql` for appropriate databases.  Make sure you updated connection string in 
