@@ -244,7 +244,7 @@ You also can create recommendation function to pull several listings based on a 
 
 You can find practical examples in `Notebooks/vector-store.ipynb`.
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vectorstore.png" alt="vector summarization" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vectorstore.png" alt="vector summarization" style="width:50%;">
 
 
 ### Demo #3 - Explore data summarization  
