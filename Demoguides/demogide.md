@@ -161,7 +161,7 @@ For this demo you need to get connected for second DB provisioned above.
 
 1. When you create subscription you should see records inserted in the replica server equal to main server.
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/replica.png" alt="Replica Table updated" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/replica.png" alt="Replica Table updated" style="width:70%;">
 
 ### Demo #7 - Explore metadata and VACUUM command
 
@@ -174,7 +174,7 @@ This demo explores PostgreSQL system catalogs and maintenance commands:
 
 You can find example queries and demonstrations in `Notebooks/metadata.ipynb` and related notebooks.
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vacuum.png" alt="vacuum example" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vacuum.png" alt="vacuum example" style="width:70%;">
 
 
 ### Demo #8 - Explore Query Store
@@ -189,7 +189,7 @@ Key views to explore:
 
 You can find example queries and practical usage in `Notebooks/QueryStore.ipynb`.
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/querystore.png" alt="querystore example" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/querystore.png" alt="querystore example" style="width:70%;">
 
 
 ## AI-3019: Build AI Apps with Azure Database for PostgreSQL
