@@ -229,7 +229,7 @@ FROM reviews
 WHERE id IN (1, 3);
 ```
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/sentiment.png" alt="sentiment analyzing" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/sentiment.png" alt="sentiment analyzing" style="width:70%;">
 
 
 ### Demo #2 - Explore vector search.
@@ -253,7 +253,7 @@ This task demonstrates how to generate two-sentence summaries of property descri
 
 You can find practical examples in `Notebooks/summarization.ipynb`.
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/summarization.png" alt="review summarization" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/summarization.png" alt="review summarization" style="width:70%;">
 
 ### Demo #4 - Explore sentiment analysis   
 
@@ -261,7 +261,7 @@ Following demonstrates how to analyze the sentiment of property reviews using Az
 
 You can find practical examples in `Notebooks/sentiments.ipynb`.
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/sentiments.png" alt="analyzed sentiments" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/sentiments.png" alt="analyzed sentiments" style="width:70%;">
 
 ### Demo #5 - Explore text analysis   
 
