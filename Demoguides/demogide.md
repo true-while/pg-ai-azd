@@ -34,7 +34,7 @@ To connect and manage your PostgreSQL databases, you can use the following tools
 
 - [Azure Data Studio](https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio) – A cross-platform database tool for data professionals.
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql) – Enables PostgreSQL management and query capabilities directly in VS Code.
-- 
+
 </div>
 
 ***
@@ -85,12 +85,12 @@ These tools provide a user-friendly interface for connecting, querying, and mana
 When you run the **Azure Data Studio** you need create a connection to your server. Server name can be picked from the `Overview` page from the Azure Portal and user name is pgAdmin and password located in the Keyvault secret `pgAdmin`.
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/connect.png" alt="Azure Data Studio" style="width:70%;">
-<br></br>
+
 
 After connection to the server you should see the list of the databases and will be able to run the SQL query. 
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/query.png" alt="Explain example" style="width:70%;">
-<br></br>
+
 
 ### Demo #3 - Explain statement
 
@@ -107,7 +107,7 @@ You can demonstrate queries and result of from `Notebooks/explain.ipynb`.
 
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/explain.png" alt="Explain example" style="width:100%;">
-<br></br>
+
 
 
 ### Demo #4 - Explain DB Roles in PostgreSQL
@@ -122,7 +122,7 @@ Azure Database for PostgreSQL includes several built-in roles to help manage and
 You can demonstrate assigning and building custom roles from `Notebooks/roles.ipynb`.
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/roles.png" alt="Roles" style="width:100%;">
-<br></br>
+
 
 ### Demo #5 - Explain Stored Procedure and Functions
 
@@ -137,7 +137,7 @@ Azure Database for PostgreSQL supports both user-defined functions and stored pr
 You can find practical examples in `Notebooks/proc-func.ipynb`.
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/proc-func.png" alt="Stored Procedures and Functions" style="width:70%;">
-<br></br>
+
 
 
 ### Demo #6 - Explain replication 
@@ -154,15 +154,14 @@ For this demo you need to get connected for second DB provisioned above.
 3. Check the firewall settings. It should be opened to let the second server connects:
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/networking.png" alt="firewall exception" style="width:100%;">
-<br></br>
 
-4. Then you need to run queries from `Notebooks/pub-sub.sql` for appropriate databases.  Make sure you updated connection string in 
+
+1. Then you need to run queries from `Notebooks/pub-sub.sql` for appropriate databases.  Make sure you updated connection string in 
 `CREATE SUBSCRIPTION sub CONNECTION ...`
 
-5. When you create subscription you should see records inserted in the replica server equal to main server.
+1. When you create subscription you should see records inserted in the replica server equal to main server.
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/replica.png" alt="Replica Table updated" style="width:100%;">
-<br></br>
 
 ### Demo #7 - Explore metadata and VACUUM command
 
@@ -176,7 +175,7 @@ This demo explores PostgreSQL system catalogs and maintenance commands:
 You can find example queries and demonstrations in `Notebooks/metadata.ipynb` and related notebooks.
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vacuum.png" alt="vacuum example" style="width:100%;">
-<br></br>
+
 
 ### Demo #8 - Explore Query Store
 
@@ -191,7 +190,7 @@ Key views to explore:
 You can find example queries and practical usage in `Notebooks/QueryStore.ipynb`.
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/querystore.png" alt="querystore example" style="width:100%;">
-<br></br>
+
 
 ## AI-3019: Build AI Apps with Azure Database for PostgreSQL
 
@@ -231,7 +230,7 @@ WHERE id IN (1, 3);
 ```
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/sentiment.png" alt="sentiment analyzing" style="width:100%;">
-<br></br>
+
 
 ### Demo #2 - Explore vector search.
 
@@ -240,14 +239,12 @@ This demo shows how to enhance a listings database with semantic search using Az
 You can find practical examples in `Notebooks/vector-search.ipynb`.
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vectorsearch.png" alt="vector search" style="width:100%;">
-<br></br>
 
 You also can create recommendation function to pull several listings based on a provided preferences.
 
 You can find practical examples in `Notebooks/vector-store.ipynb`.
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vectorstore.png" alt="vector summarization" style="width:100%;">
-<br></br>
 
 
 ### Demo #3 - Explore data summarization  
@@ -257,7 +254,6 @@ This task demonstrates how to generate two-sentence summaries of property descri
 You can find practical examples in `Notebooks/summarization.ipynb`.
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/summarization.png" alt="review summarization" style="width:100%;">
-<br></br>
 
 ### Demo #4 - Explore sentiment analysis   
 
@@ -266,7 +262,6 @@ Following demonstrates how to analyze the sentiment of property reviews using Az
 You can find practical examples in `Notebooks/sentiments.ipynb`.
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/sentiments.png" alt="analyzed sentiments" style="width:100%;">
-<br></br>
 
 ### Demo #5 - Explore text analysis   
 
@@ -276,7 +271,6 @@ You can find practical examples in `Notebooks/text.ipynb`.
 
 
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/text.png" alt="analyzed review" style="width:100%;">
-<br></br>
 
 ### Demo #6 - Explore Translate Text  
 
