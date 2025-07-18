@@ -28,7 +28,7 @@
             border: 1px solid lightgray; 
             margin: 5px;">
 
-**Tip:** This template will build enviroment and load up it with data. Meanwhile to set up demos you might need to configure additional settings  mention in preparation steps: 
+**Tip:** This template will build environment and load up it with data. Meanwhile to set up demos you might need to configure additional settings  mention in preparation steps: 
 
 To connect and manage your PostgreSQL databases, you can use the following tools:
 
@@ -38,7 +38,7 @@ To connect and manage your PostgreSQL databases, you can use the following tools
 </div>
 
 ***
-### 1. What Resources are getting deployed
+### 1. What Resources are getting deployed?
 This scenario deploys a PostgreSQL environment to showcase key database features and functionality, along with its integration with Azure services such as Key Vault and OpenAI. 
 
 Deployment includes:
@@ -53,11 +53,11 @@ Deployment includes:
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/rg.png" alt="RG content" style="width:100%;">
 <br></br>
 
-### What can I demo from this scenario after deployment
+### What can I demo from this scenario after deployment?
 
-This demo environment has been created to support the delivery of courses DP-3021 and AI-3019. It focuses on the deployment and configuration of PostgreSQL, as well as its integration with Azure AI services. The demos are organized to follow the sequence of modules in the corresponding classes.
+This demo environment has been created to support the delivery of courses `DP-3021` and `AI-3019`. It focuses on the deployment and configuration of PostgreSQL, as well as its integration with Azure AI services. The demos are organized to follow the sequence of modules in the corresponding classes.
 
-## DP-3021. Configure and migrate to Azure Database for PostgreSQL 
+## DP-3021: Configure and migrate to Azure Database for PostgreSQL 
 
 ### Demo #1 Provision PostgreSQL and Configure Server parameters
 
@@ -92,7 +92,7 @@ After connection to the server you should see the list of the databases and will
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/query.png" alt="Explain example" style="width:70%;">
 <br></br>
 
-## Demo 3: Explain statement
+### Demo 3: Explain statement
 
 The `EXPLAIN` statement displays the execution plan for a query, helping you understand how PostgreSQL will execute it. This includes whether indexes are used, how tables are joined, and the estimated cost of the query.
 
@@ -110,7 +110,7 @@ You can demonstrate queries and result of from `Notebooks/explain.ipynb`.
 <br></br>
 
 
-## Demo 4: Explain DB Roles in PostgreSQL
+### Demo 4: Explain DB Roles in PostgreSQL
 
 These roles help ensure secure and controlled access to your PostgreSQL server in Azure. The server already contains set of predefined roles like `pgAdmin` and `pg_database_owner`
 
@@ -124,7 +124,7 @@ You can demonstrate assigning and building custom roles from `Notebooks/roles.ip
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/roles.png" alt="Roles" style="width:100%;">
 <br></br>
 
-## Demo 5: Explain Stored Procedure and Functions
+### Demo 5: Explain Stored Procedure and Functions
 
 Azure Database for PostgreSQL supports both user-defined functions and stored procedures to help you encapsulate logic and reuse code in your database.
 
@@ -140,7 +140,7 @@ You can find practical examples in `Notebooks/proc-func.ipynb`.
 <br></br>
 
 
-## Demo 6: Explain replication 
+### Demo 6: Explain replication 
 
 For this demo you need to get connected for second DB provisioned above.
 
@@ -164,7 +164,7 @@ For this demo you need to get connected for second DB provisioned above.
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/replica.png" alt="Replica Table updated" style="width:100%;">
 <br></br>
 
-## Demo 7: Explore metadata and VACUUM command
+### Demo 7: Explore metadata and VACUUM command
 
 This demo explores PostgreSQL system catalogs and maintenance commands:
 
@@ -178,7 +178,7 @@ You can find example queries and demonstrations in `Notebooks/metadata.ipynb` an
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vacuum.png" alt="vacuum example" style="width:100%;">
 <br></br>
 
-## Demo 8: Explore Query Store
+### Demo 8: Explore Query Store
 
 This demo introduces the Query Store feature in Azure Database for PostgreSQL, which helps you monitor and analyze query performance over time. Query Store automatically captures query history, execution statistics, and wait events, making it easier to troubleshoot and optimize workloads.
 
@@ -193,7 +193,7 @@ You can find example queries and practical usage in `Notebooks/QueryStore.ipynb`
 <img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/querystore.png" alt="querystore example" style="width:100%;">
 <br></br>
 
-## AI-3019. Build AI Apps with Azure Database for PostgreSQL
+## AI-3019: Build AI Apps with Azure Database for PostgreSQL
 
 before run demo configure extensions with key and endpoint and location from your AI Language service 
 
