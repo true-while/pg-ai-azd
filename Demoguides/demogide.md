@@ -50,7 +50,7 @@ Deployment includes:
 * Azure Database for PostgreSQL flexible server in two instance
 * Azure OpenAI service
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/rg.png" alt="RG content" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/rg.png" alt="RG content" style="width:70%;">
 
 
 ### What can I demo from this scenario after deployment?
@@ -71,7 +71,7 @@ The following parameters can be configured from the `Server parameters` blade in
 * **temp_buffers:** Defines the amount of memory used for temporary tables within each session.
 * **effective_cache_size**: Provides a rough estimate of how much memory is available for disk caching by the operating system and PostgreSQL.
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/params.png" alt="Server parameters" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/params.png" alt="Server parameters" style="width:70%;">
 
 
 
@@ -106,7 +106,7 @@ The `EXPLAIN` statement displays the execution plan for a query, helping you und
 You can demonstrate queries and result of from `Notebooks/explain.ipynb`.
 
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/explain.png" alt="Explain example" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/explain.png" alt="Explain example" style="width:70%;">
 
 
 
