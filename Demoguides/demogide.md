@@ -238,7 +238,7 @@ This demo shows how to enhance a listings database with semantic search using Az
 
 You can find practical examples in `Notebooks/vector-search.ipynb`.
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vectorsearch.png" alt="vector search" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/vectorsearch.png" alt="vector search" style="width:70%;">
 
 You also can create recommendation function to pull several listings based on a provided preferences.
 
@@ -270,7 +270,7 @@ The workflow demonstrates how to use Azure Cognitive Services in PostgreSQL to e
 You can find practical examples in `Notebooks/text.ipynb`.
 
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/text.png" alt="analyzed review" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/text.png" alt="analyzed review" style="width:70%;">
 
 ### Demo #6 - Explore Translate Text  
 
@@ -288,7 +288,7 @@ In this demo, you will populate the language translation table by creating and e
 
 You can find practical examples in `Notebooks/translation.ipynb`.
 
-<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/translated.png" alt="translated review" style="width:100%;">
+<img src="https://raw.githubusercontent.com/true-while/pg-ai-azd/main/Demoguides/translated.png" alt="translated review" style="width:70%;">
 <br></br>
 
 
