@@ -1,4 +1,4 @@
-## Introduction for Azure PostgreSQL and AI
+## Introduction to Azure PostgreSQL and AI
 
 This repo contains a demo for an Azure App Service WebApp, Storage Account and Azure Front Door with CDN, allowing to showcase the caching functionality by displaying Seattle scenery images and showing the loading time for different back-ends. This scenario can be deployed to Azure using the [Azure Developer CLI - AZD](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview). 
 
@@ -37,7 +37,7 @@ azd up
 The demo scenario is covering classes
 
 * DP-3021: Configure and migrate to Azure Database for PostgreSQL 
-*  AI-3019: Build AI Apps with Azure Database for PostgreSQL
+* AI-3019: Build AI Apps with Azure Database for PostgreSQL
 
 This demonstration provides a comprehensive overview of how to connect, manage, and utilize Azure Database for PostgreSQL using modern tools and Azure services. It begins by introducing essential connectivity tools such as Azure Data Studio and the PostgreSQL extension for Visual Studio Code, which offer user-friendly interfaces for database management and query execution.
 
@@ -51,6 +51,6 @@ Use the [demo guide](https://raw.githubusercontent.com/true-while/pg-ai-azd/refs
 ## 💭 Feedback and Contributing
 Feel free to create issues for bugs, suggestions or Fork and create a PR with new demo scenarios or optimizations to the templates. 
 If you like the scenario, consider giving a GitHub ⭐
- 
+
 
 
