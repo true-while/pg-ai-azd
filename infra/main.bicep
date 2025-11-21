@@ -19,6 +19,7 @@ param IP string
 //   tags: union(tags, { 'azd-service-name': <service name in azure.yaml> })
 var tags = {
   'azd-env-name': environmentName
+  'SecurityControl': 'Ignore'
 }
 
 @description('Id of the user or app to assign application roles')
